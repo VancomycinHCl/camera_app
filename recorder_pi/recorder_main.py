@@ -22,7 +22,6 @@ class TimerThread(QThread):
         self.cmd = commandInstance
         print(self.cmd.payload)
         if executable:
-            # pass
             self.a = self.ThreadTimer()
         else:
             # self.ThreadTimer()
@@ -48,11 +47,6 @@ class TimerThread(QThread):
 
     def run(self):
 
-        # self.threadTimer = QTimer()
-        # self.threadTimer.setInterval(self.timerInterval)
-        # self.threadTimer.timeout.connect(self.function)
-        # self.threadTimer.setSingleShot(True)
-
         # currentTime = QtCore.QTime.currentTime()
         logging.info("A new thread will be created for timing and automatic recording")
         logging.info(self.timerInterval)
@@ -66,6 +60,8 @@ class TimerThread(QThread):
         #print(currentTime.hour())
     def __del__(self):
         self.threadTimer.killTimer(id(self.a))
+
+
 class MyWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self):
         super(MyWindow, self).__init__()
